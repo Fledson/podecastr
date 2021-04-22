@@ -5,7 +5,7 @@ export function Player() {
   return (
     <div className={styles.playerContainer}>
       <header>
-        <img src="playing.svg" alt="tocando agora"/>
+        <img src="/playing.svg" alt="tocando agora"/>
         <strong>Tocando agora</strong>
       </header>
 
