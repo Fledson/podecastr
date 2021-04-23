@@ -9,6 +9,7 @@ import { convertDurationToTimeString } from "../../utils/convertDurationToTimeSt
 
 import styles from './episode.module.scss'
 
+/** ===================== TIPAGENS ===================== */
 type Episode = {
   id: string;
   title: string;
@@ -25,7 +26,17 @@ type EpisodeProps = {
   episode: Episode;
 }
 
+/** ===================== PAGINA EPISODE ===================== */
+
 export default function Episode({episode}: EpisodeProps) {
+
+  
+  // const router = useRouter();
+
+  // // AJUSTE -> MOSTRAR MENSAGEM QUANDO A PAGINA ESTIVER CARREGANDO
+  // if (router.isFallback) {
+  //   return <p>Carregando...</p>
+  // }
 
   return (
     <div className={styles.episode}>
@@ -66,12 +77,33 @@ export default function Episode({episode}: EpisodeProps) {
   )
 }
 
+/** ===================== CONFIGURANDO A GERAÇÃO DE PAGINAS ESTATICAS DINAMICAMENTE ===================== */
+
 export const getStaticPaths: GetStaticPaths = async () => {
+
+  const { data } = await api.get('episodes', {
+    params: {
+      _limit: 2,
+      _sort:"published_at",
+      _order: "desc"
+    }
+  })
+
+  const paths = data.map(episode => {
+      return {
+        params: {
+          slug: episode.id
+        }
+      }
+  })
+
   return {
-    paths: [],
+    paths,
     fallback: 'blocking'
   }
 }
+
+/** ===================== GERANDO PAGINAS ESTATICAS => CHAMADA A API ===================== */
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { slug } = ctx.params;

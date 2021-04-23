@@ -9,6 +9,8 @@ import { convertDurationToTimeString } from '../utils/convertDurationToTimeStrin
 
 
 import styles from './home.module.scss';
+import { useContext } from 'react';
+import { PlayerContext } from '../contexts/PlayerContexts';
 
 /** ====================== TIPAGENS ===================== */
 type Episode = {
@@ -30,12 +32,13 @@ type HomeProps = {
 /** ====================== RENDERIZANDO A TELA ===================== */
 export default function Home({latestEpisodes, allEpisodes}:HomeProps) {
    
+  const { play } = useContext(PlayerContext);
   
   return (
     <div className={styles.homepage}>
 
       <section className={styles.latestEpisodes}>
-        <p>Ultimos Lançamentos</p>
+        <h2>Ultimos Lançamentos</h2>
        
         <ul>
           {latestEpisodes.map(episode => {
@@ -62,7 +65,7 @@ export default function Home({latestEpisodes, allEpisodes}:HomeProps) {
 
                     </div>
 
-                    <button type="button">
+                    <button type="button" onClick={() => play(episode)}>
                       <img src="/play-green.svg" alt="Tocar Episodio" title="Tocar Episodio"/>
                     </button>
 
