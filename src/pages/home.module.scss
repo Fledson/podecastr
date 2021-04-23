@@ -14,7 +14,7 @@
     list-style: none;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5 rem;
+    gap: 1.5rem;
 
     li {
       background: var(--white);
@@ -26,7 +26,7 @@
       display: flex;
       align-items: center;
 
-      img{ 
+      img { 
         width: 6rem;
         height: 6rem;
         border-radius: 1rem;

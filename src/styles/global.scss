@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+
 :root {
   --white: #FFF;
 
@@ -19,6 +20,12 @@
   --purple-400: #9164FA; 
   --purple-500: #8257E5;
   --purple-800: #6F48C9;
+}
+
+@media (max-width: 1366px) {
+  html {
+    font-size: 70%;
+  }
 }
 
 @media (max-width: 1000px){
