@@ -1,17 +1,29 @@
+.container {
+  height: calc(100vh - 6.5rem);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--gray-100);
+  }
+  &::-webkit-scrollbar {
+    width: 0.30rem;
+    background-color: var(--gray-100);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--purple-500);
+  }
+}
+
 .episode {
   max-width: 45rem;
   padding: 3rem 2rem;
   margin: 0 auto;
 
-  height: calc(100vh - 6.5rem); // pegando o espaço livre - o header
-  overflow-y: scroll;
-
-
   .thumbnailContainer {
     position: relative;
 
     img {
-      border-radius:  1rem;
+      border-radius: 1rem;
     }
 
     button {
@@ -42,11 +54,10 @@
       &:hover {
         filter: brightness(0.9);
       }
-     
     }
   }
 
-  header { 
+  header {
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--gray-100);
 
@@ -68,8 +79,8 @@
           content: "";
           width: 4px;
           height: 4px;
-          border-radius: 2px;
-          background: #DDD;
+          border-radius: 50%;
+          background: #ddd;
           position: absolute;
           left: 0;
           top: 50%;
@@ -82,11 +93,10 @@
   .description {
     margin-top: 2rem;
     line-height: 1.675rem;
-    color: var(--gray-800);
+    color: var(--green-800);
 
-    p{
+    p {
       margin: 1.5rem 0;
     }
   }
 }
-
